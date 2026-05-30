@@ -18,16 +18,21 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+'use strict';
+
 const textEncoder = new TextEncoder();
 const seedData = {};
 let seedRand = undefined;
 
 class SeededRandom {
+    callCount = 0;
+
     constructor(seed) {
         this.a = parseInt(seed, 16);
     }
 
     next() { /* mulberry32 from https://github.com/bryc/code/blob/master/jshash/PRNGs.md */
+        this.callCount++;
         this.a |= 0;
         this.a = this.a + 0x6D2B79F5 | 0;
         let t = Math.imul(this.a ^ this.a >>> 15, 1 | this.a);
@@ -93,6 +98,8 @@ init()
     .then(() => {
         if (seedRand) {
             console.debug('SeedData Initialized', seedData);
+            window.$crcp = {};
+            window.$crcp.seedRand = seedRand;
         } else {
             console.debug('No seed input provided, using default random number generator.');
         }
