@@ -1,0 +1,25 @@
+{
+  "name": "crcp6340-genart-nft",
+  "license": "MIT",
+  "private": true,
+  "description": "A template for the generative art NFT project for CRCP 6340 - Creative Coding for Application Development.",
+  "author": {
+    "name": "Brittni Watkins",
+    "url": "https://blwatkins.github.io/"
+  },
+  "homepage": "https://github.com/blwatkins/CRCP6340-GenArt-NFT#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blwatkins/CRCP6340-GenArt-NFT.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blwatkins/CRCP6340-GenArt-NFT/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": "^22.13.0 || >=24"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
