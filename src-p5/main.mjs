@@ -22,8 +22,11 @@
 
 import p5 from 'p5';
 
+import { CanvasDimensions } from '../src-shared/canvas-dimensions.js';
 import { Random } from '../src-shared/random.mjs';
 import { loadSeed } from '../src-shared/seeded-random.mjs';
+
+import '../assets/css/main.css';
 
 /**
  * @return {Promise<void>}
@@ -86,7 +89,12 @@ function sketch(ctx) {
     const circles = [];
 
     ctx.setup = () => {
-        ctx.createCanvas(720, 720);
+        CanvasDimensions.aspectRatio = { widthRatio: 1, heightRatio: 1 };
+        CanvasDimensions.resolution = 1080;
+        const { width: canvasWidth, height: canvasHeight } = CanvasDimensions.getDimensions();
+        const canvas = ctx.createCanvas(canvasWidth, canvasHeight);
+        decorateCanvas(canvas);
+
         totalCircles = Random.randomInt(1, 100);
 
         for (let i = 0; i < totalCircles; i++) {
@@ -100,6 +108,27 @@ function sketch(ctx) {
             circle.render();
         });
     };
+
+    ctx.windowResized = () => {
+        const canvas = ctx.select('canvas');
+
+        if (canvas) {
+            decorateCanvas(canvas);
+        }
+    };
+
+    /**
+     * @param {p5.Element} canvas
+     */
+    function decorateCanvas(canvas) {
+        const canvasFill = CanvasDimensions.getCanvasFill();
+
+        if (canvasFill === 'width') {
+            canvas.attribute('style', 'width: 100vw;');
+        } else {
+            canvas.attribute('style', 'height: 100vh;');
+        }
+    }
 }
 
 await loadRandomSeed();
