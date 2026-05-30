@@ -20,6 +20,7 @@
     "node": "^22.13.0 || >=24"
   },
   "scripts": {
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:p5:dev": "webpack --mode development --config webpack.p5.config.mjs",
     "build:p5": "webpack --mode production --config webpack.p5.config.mjs",
@@ -31,8 +32,13 @@
     "three": "^0.184.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.1.4",
+    "eslint": "^10.4.1",
+    "eslint-plugin-es-x": "^9.6.0",
+    "globals": "^17.6.0",
     "html-webpack-plugin": "^5.6.7",
     "mini-css-extract-plugin": "^2.10.2",
     "webpack": "^5.107.2",
