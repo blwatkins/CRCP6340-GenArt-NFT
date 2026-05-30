@@ -23,6 +23,8 @@
 import p5 from 'p5';
 import { Random } from './random.mjs';
 
+// TODO - single JavaScript output? Use window.$crcp to store global token data
+
 Random.init();
 
 /**
