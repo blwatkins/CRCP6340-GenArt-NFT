@@ -53,7 +53,10 @@ export default {
             chunkFilename: '[name].[contenthash:8].css'
         }),
         new CopyPlugin({
-            patterns: [{ from: './assets/icon', to: '.' }]
+            patterns: [
+                { from: './assets/icon', to: '.' },
+                { from: './assets/js', to: './js' }
+            ]
         })
     ],
     optimization: {
@@ -76,7 +79,11 @@ export default {
         host: '127.0.0.1',
         port: 8080,
         hot: true,
-        watchFiles: ['./p5-src/**/*.js', './p5-src/**/*.mjs'],
+        watchFiles: [
+            './p5-src/**/*.js',
+            './p5-src/**/*.mjs',
+            './assets/js/**/*.js'
+        ],
         liveReload: true,
         open: true,
         webSocketServer: 'ws'
