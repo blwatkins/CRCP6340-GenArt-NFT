@@ -25,6 +25,9 @@ import p5 from 'p5';
 import { Random } from '../src-shared/random.mjs';
 import { loadSeed } from '../src-shared/seeded-random.mjs';
 
+/**
+ * @return {Promise<void>}
+ */
 async function loadRandomSeed() {
     await loadSeed();
 
@@ -35,7 +38,7 @@ async function loadRandomSeed() {
 
         Random.rand = window.$crcp.seedRand.next.bind(window.$crcp.seedRand);
     } else {
-        console.info('No seed input provided, using default random number generator.')
+        console.info('No seed input provided, using default random number generator.');
     }
 }
 
@@ -43,28 +46,59 @@ async function loadRandomSeed() {
  * @param {p5} ctx
  */
 function sketch(ctx) {
-    let x;
-    let y;
-    let d;
-    let r;
-    let g;
-    let b;
+    class Circle {
+        constructor() {
+            this.d = Random.randomFloat(5, 200);
+            this.r = this.d / 2.0;
+            this.x = Random.randomFloat(this.r, ctx.width - this.r);
+            this.y = Random.randomFloat(this.r, ctx.height - this.r);
+            this.color = {};
+            this.color.r = Random.randomInt(0, 250);
+            this.color.g = Random.randomInt(0, 255);
+            this.color.b = Random.randomInt(0, 255);
+            this.color.a = Random.randomInt(100, 200);
+            this.isColorFill = Random.randomBoolean();
+            this.strokeWeight = Random.randomInt(1, 6);
+        }
+
+        render() {
+            if (this.isColorFill) {
+                ctx.fill(this.color.r, this.color.g, this.color.b, this.color.a);
+                ctx.noStroke();
+            } else {
+                ctx.strokeWeight(this.strokeWeight);
+                ctx.stroke(this.color.r, this.color.g, this.color.b, this.color.a);
+                ctx.noFill();
+            }
+
+            ctx.ellipse(this.x, this.y, this.d, this.d);
+        }
+    }
+
+    /**
+     * @type {number}
+     */
+    let totalCircles;
+
+    /**
+     * @type {Circle[]}
+     */
+    const circles = [];
 
     ctx.setup = () => {
         ctx.createCanvas(720, 720);
-        d = Random.randomInt(10, 200);
-        const rad = d / 2.0;
-        x = Random.randomInt(rad, ctx.width - rad);
-        y = Random.randomInt(rad, ctx.height - rad);
-        r = Random.randomInt(0, 255);
-        g = Random.randomInt(0, 255);
-        b = Random.randomInt(0, 255);
+        totalCircles = Random.randomInt(1, 100);
+
+        for (let i = 0; i < totalCircles; i++) {
+            circles.push(new Circle());
+        }
     };
 
     ctx.draw = () => {
         ctx.background(255);
-        ctx.fill(r, g, b);
-        ctx.ellipse(x, y, d, d);
+        circles.forEach((circle) => {
+            circle.render();
+        });
     };
 }
 
