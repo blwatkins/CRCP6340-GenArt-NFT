@@ -81,7 +81,8 @@ export default {
         watchFiles: [
             './src-p5/**/*.js',
             './src-p5/**/*.mjs',
-            './assets/js/**/*.js'
+            './src-shared/**/*.js',
+            './src-shared/**/*.mjs',
         ],
         liveReload: true,
         open: true,
