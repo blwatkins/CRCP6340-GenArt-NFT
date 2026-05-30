@@ -54,8 +54,7 @@ export default {
         }),
         new CopyPlugin({
             patterns: [
-                { from: './assets/icon', to: '.' },
-                { from: './assets/js', to: './js' }
+                { from: './assets/icon', to: '.' }
             ]
         })
     ],

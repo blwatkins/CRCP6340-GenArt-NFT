@@ -23,18 +23,13 @@
 export class Random {
     static #randomFunction = Math.random;
 
-    static init() {
-        if (window.$crcp && window.$crcp.seedRand) {
-            if (window.$crcp.seedRand.rand) {
-                Random.#randomFunction = window.$crcp.seedRand.rand.bind(window.$crcp.seedRand);
-                return;
-            } else if (window.$crcp.seedRand.next) {
-                Random.#randomFunction = window.$crcp.seedRand.next.bind(window.$crcp.seedRand);
-                return;
-            }
+    static set rand(randomFunction) {
+        if (!randomFunction || typeof randomFunction !== 'function') {
+            Random.#randomFunction = Math.random;
+            return;
         }
 
-        Random.#randomFunction = Math.random;
+        Random.#randomFunction = randomFunction;
     }
 
     static random(min, max) {

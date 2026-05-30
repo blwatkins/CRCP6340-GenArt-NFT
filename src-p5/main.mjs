@@ -24,15 +24,13 @@ import p5 from 'p5';
 import { loadSeed } from '../src-shared/seeded-random.mjs';
 import { Random } from '../src-shared/random.mjs';
 
-// TODO - single JavaScript output? Use window.$crcp to store global token data
+async function loadRandomSeed() {
+    await loadSeed();
 
-loadSeed();
-
-// TODO - output seed data if available
-// TODO - pass selected function to Random.init()???
-// TODO - test
-
-Random.init();
+    if (window.$crcp?.seedRand) {
+        Random.rand = window.$crcp.seedRand.next.bind(window.$crcp.seedRand);
+    }
+}
 
 /**
  * @param {p5} ctx
@@ -47,9 +45,10 @@ function sketch(ctx) {
 
     ctx.setup = () => {
         ctx.createCanvas(720, 720);
-        x = Random.randomInt(0, ctx.width);
-        y = Random.randomInt(0, ctx.height);
         d = Random.randomInt(10, 200);
+        const rad = d / 2.0;
+        x = Random.randomInt(rad, ctx.width - rad);
+        y = Random.randomInt(rad, ctx.height - rad);
         r = Random.randomInt(0, 255);
         g = Random.randomInt(0, 255);
         b = Random.randomInt(0, 255);
@@ -62,4 +61,5 @@ function sketch(ctx) {
     };
 }
 
+await loadRandomSeed();
 new p5(sketch);
