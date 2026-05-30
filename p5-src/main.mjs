@@ -29,9 +29,9 @@ function sketch(ctx) {
     };
 
     ctx.draw = () => {
-      ctx.background(0);
-      ctx.fill(255);
-      ctx.ellipse(ctx.mouseX, ctx.mouseY, 100, 100);
+        ctx.background(0);
+        ctx.fill(255);
+        ctx.ellipse(ctx.mouseX, ctx.mouseY, 100, 100);
     };
 }
 

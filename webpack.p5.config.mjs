@@ -46,7 +46,7 @@ export default {
             title: 'p5.js Sketch',
             inject: 'body',
             favicon: './assets/icon/favicon.ico',
-            template: './html-template/index.html',
+            template: './html-template/index.html'
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash:8].css',
