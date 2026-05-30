@@ -20,13 +20,18 @@
     "node": "^22.13.0 || >=24"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:p5:dev": "webpack --mode development --config webpack.p5.config.mjs",
+    "build:p5": "webpack --mode production --config webpack.p5.config.mjs",
+    "build:check": "npm run build:p5:dev && npm run build:p5",
+    "dev:p5": "webpack-dev-server --mode development --config webpack.p5.config.mjs"
   },
   "dependencies": {
     "p5": "^2.3.0",
     "three": "^0.184.0"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.1.4",
     "html-webpack-plugin": "^5.6.7",
     "mini-css-extract-plugin": "^2.10.2",
