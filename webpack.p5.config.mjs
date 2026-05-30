@@ -82,7 +82,7 @@ export default {
             './src-p5/**/*.js',
             './src-p5/**/*.mjs',
             './src-shared/**/*.js',
-            './src-shared/**/*.mjs',
+            './src-shared/**/*.mjs'
         ],
         liveReload: true,
         open: true,
