@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2026 Brittni Watkins.
+ * Copyright (c) 2025-2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -20,39 +20,36 @@
 
 'use strict';
 
-import p5 from 'p5';
-import { Random } from './random.mjs';
+export class Random {
+    static #randomFunction = Math.random;
 
-// TODO - single JavaScript output? Use window.$crcp to store global token data
+    static init() {
+        if (window.$crcp && window.$crcp.seedRand) {
+            if (window.$crcp.seedRand.rand) {
+                Random.#randomFunction = window.$crcp.seedRand.rand.bind(window.$crcp.seedRand);
+                return;
+            } else if (window.$crcp.seedRand.next) {
+                Random.#randomFunction = window.$crcp.seedRand.next.bind(window.$crcp.seedRand);
+                return;
+            }
+        }
 
-Random.init();
+        Random.#randomFunction = Math.random;
+    }
 
-/**
- * @param {p5} ctx
- */
-function sketch(ctx) {
-    let x;
-    let y;
-    let d;
-    let r;
-    let g;
-    let b;
+    static random(min, max) {
+        return (Random.#randomFunction() * (max - min)) + min;
+    }
 
-    ctx.setup = () => {
-        ctx.createCanvas(720, 720);
-        x = Random.randomInt(0, ctx.width);
-        y = Random.randomInt(0, ctx.height);
-        d = Random.randomInt(10, 200);
-        r = Random.randomInt(0, 255);
-        g = Random.randomInt(0, 255);
-        b = Random.randomInt(0, 255);
-    };
+    static randomFloat(min, max) {
+        return Random.random(min, max);
+    }
 
-    ctx.draw = () => {
-        ctx.background(255);
-        ctx.fill(r, g, b);
-        ctx.ellipse(x, y, d, d);
-    };
+    static randomInt(min, max) {
+        return Math.floor(Random.randomFloat(min, max));
+    }
+
+    static randomBoolean() {
+        return Random.randomFloat(0, 1) < 0.5;
+    }
 }
-
-new p5(sketch);

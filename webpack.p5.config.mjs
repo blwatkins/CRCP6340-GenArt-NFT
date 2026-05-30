@@ -29,7 +29,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default {
-    entry: './p5-src/main.mjs',
+    entry: './src-p5/main.mjs',
     module: {
         rules: [
             {
@@ -80,8 +80,8 @@ export default {
         port: 8080,
         hot: true,
         watchFiles: [
-            './p5-src/**/*.js',
-            './p5-src/**/*.mjs',
+            './src-p5/**/*.js',
+            './src-p5/**/*.mjs',
             './assets/js/**/*.js'
         ],
         liveReload: true,
