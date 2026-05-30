@@ -25,8 +25,6 @@ const seedData = {};
 let seedRand = undefined;
 
 class SeededRandom {
-    callCount = 0;
-
     /**
      * @param {number} seed
      */
@@ -38,7 +36,6 @@ class SeededRandom {
      * @returns {number}
      */
     next() { /* mulberry32 from https://github.com/bryc/code/blob/master/jshash/PRNGs.md */
-        this.callCount++;
         this.a |= 0;
         this.a = this.a + 0x6D2B79F5 | 0;
         let t = Math.imul(this.a ^ this.a >>> 15, 1 | this.a);
@@ -112,6 +109,9 @@ async function init() {
     }
 }
 
+/**
+ * @return {Promise<void>}
+ */
 export async function loadSeed() {
     await init();
 
@@ -119,7 +119,5 @@ export async function loadSeed() {
         window.$crcp = {};
         window.$crcp.seedData = seedData;
         window.$crcp.seedRand = seedRand;
-    } else {
-        console.info('No seed input provided, using default random number generator.');
     }
 }

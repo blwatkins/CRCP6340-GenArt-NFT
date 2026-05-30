@@ -21,14 +21,21 @@
 'use strict';
 
 import p5 from 'p5';
-import { loadSeed } from '../src-shared/seeded-random.mjs';
+
 import { Random } from '../src-shared/random.mjs';
+import { loadSeed } from '../src-shared/seeded-random.mjs';
 
 async function loadRandomSeed() {
     await loadSeed();
 
     if (window.$crcp?.seedRand) {
+        if (window.$crcp.seedData) {
+            console.debug(`Seed Data`, window.$crcp.seedData);
+        }
+
         Random.rand = window.$crcp.seedRand.next.bind(window.$crcp.seedRand);
+    } else {
+        console.info('No seed input provided, using default random number generator.')
     }
 }
 
