@@ -40,12 +40,19 @@ export class CanvasDimensions {
      * @param {{widthRatio: number, heightRatio: number}} aspectRatio
      */
     static set aspectRatio(aspectRatio) {
+        if (!aspectRatio || typeof aspectRatio !== 'object') {
+            throw new TypeError('aspectRatio must be an object with widthRatio and heightRatio numbers.');
+        }
+
         if (!CanvasDimensions.#isValidRatio(aspectRatio.widthRatio)
             || !CanvasDimensions.#isValidRatio(aspectRatio.heightRatio)) {
             throw new Error('widthRatio and heightRatio must be greater than or equal to 1.');
         }
 
-        CanvasDimensions.#aspectRatio = aspectRatio;
+        CanvasDimensions.#aspectRatio = {
+            widthRatio: aspectRatio.widthRatio,
+            heightRatio: aspectRatio.heightRatio
+        };
     }
 
     /**
