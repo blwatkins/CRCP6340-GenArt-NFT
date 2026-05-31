@@ -20,6 +20,8 @@
 
 'use strict';
 
+import { loadSeed } from './seeded-random.mjs';
+
 export class Random {
     static #randomFunction = Math.random;
 
@@ -46,5 +48,22 @@ export class Random {
 
     static randomBoolean() {
         return Random.randomFloat(0, 1) < 0.5;
+    }
+}
+
+/**
+ * @return {Promise<void>}
+ */
+export async function loadRandomSeed() {
+    await loadSeed();
+
+    if (window.$crcp?.seedRand) {
+        if (window.$crcp.seedData) {
+            console.debug(`Seed Data`, window.$crcp.seedData);
+        }
+
+        Random.rand = window.$crcp.seedRand.next.bind(window.$crcp.seedRand);
+    } else {
+        console.info('No seed input provided, using default random number generator.');
     }
 }

@@ -23,27 +23,9 @@
 import p5 from 'p5';
 
 import { CanvasDimensions } from '../src-shared/canvas-dimensions.js';
-import { Random } from '../src-shared/random.mjs';
-import { loadSeed } from '../src-shared/seeded-random.mjs';
+import { Random, loadRandomSeed } from '../src-shared/random.mjs';
 
-import '../assets/css/main.css';
-
-/**
- * @return {Promise<void>}
- */
-async function loadRandomSeed() {
-    await loadSeed();
-
-    if (window.$crcp?.seedRand) {
-        if (window.$crcp.seedData) {
-            console.debug(`Seed Data`, window.$crcp.seedData);
-        }
-
-        Random.rand = window.$crcp.seedRand.next.bind(window.$crcp.seedRand);
-    } else {
-        console.info('No seed input provided, using default random number generator.');
-    }
-}
+import '../assets/css/p5.css';
 
 /**
  * @param {p5} ctx
