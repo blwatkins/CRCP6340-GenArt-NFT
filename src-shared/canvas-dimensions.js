@@ -42,7 +42,7 @@ export class CanvasDimensions {
     static set aspectRatio(aspectRatio) {
         if (!CanvasDimensions.#isValidRatio(aspectRatio.widthRatio)
             || !CanvasDimensions.#isValidRatio(aspectRatio.heightRatio)) {
-            throw new Error('widthRatio and heightRatio must be greater than 1.');
+            throw new Error('widthRatio and heightRatio must be greater than or equal to 1.');
         }
 
         CanvasDimensions.#aspectRatio = aspectRatio;
