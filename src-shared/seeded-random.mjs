@@ -72,7 +72,7 @@ class HashSeed {
         let hexString = '';
 
         for (let i = 0; i < dataView.byteLength; i++) {
-            hexString += dataView.getUint8(i).toString(16);
+            hexString += dataView.getUint8(i).toString(16).padStart(2, '0');
         }
 
         return hexString;
