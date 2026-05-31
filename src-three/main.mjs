@@ -46,14 +46,19 @@ function decorateRenderer(renderer) {
     }
 }
 
+let camera;
+let renderer;
+
 function onWindowResize() {
+    if (!camera || !renderer) {
+        return;
+    }
+
     camera.updateProjectionMatrix();
     decorateRenderer(renderer);
 }
 
-window.addEventListener('resize', () => {
-    onWindowResize();
-});
+window.addEventListener('resize', onWindowResize);
 
 CanvasDimensions.aspectRatio = { widthRatio: 1, heightRatio: 1 };
 CanvasDimensions.resolution = 1080;
@@ -62,7 +67,7 @@ const { width: canvasWidth, height: canvasHeight } = CanvasDimensions.getDimensi
 /* ---------- Scene and Lighting -------- */
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, canvasWidth / canvasHeight, 0.1, 1000);
+camera = new THREE.PerspectiveCamera(75, canvasWidth / canvasHeight, 0.1, 1000);
 camera.position.z = 5;
 
 const lightColor = 0xFFFFFF;
