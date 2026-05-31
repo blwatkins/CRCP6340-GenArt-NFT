@@ -121,5 +121,4 @@ export async function loadSeed() {
         window.$crcp.seedData = seedData;
         window.$crcp.seedRand = seedRand;
     }
-    }
 }
