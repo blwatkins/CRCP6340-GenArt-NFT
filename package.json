@@ -1,0 +1,50 @@
+{
+  "name": "crcp6340-genart-nft",
+  "license": "MIT",
+  "private": true,
+  "description": "A template for the generative art NFT project for CRCP 6340 - Creative Coding for Application Development.",
+  "author": {
+    "name": "Brittni Watkins",
+    "url": "https://blwatkins.github.io/"
+  },
+  "homepage": "https://github.com/blwatkins/CRCP6340-GenArt-NFT#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blwatkins/CRCP6340-GenArt-NFT.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blwatkins/CRCP6340-GenArt-NFT/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": "^22.13.0 || >=24"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:p5:dev": "webpack --mode development --config webpack.p5.config.mjs",
+    "build:p5": "webpack --mode production --config webpack.p5.config.mjs",
+    "build:three:dev": "webpack --mode development --config webpack.three.config.mjs",
+    "build:three": "webpack --mode production --config webpack.three.config.mjs",
+    "build:check": "npm run build:p5:dev && npm run build:p5 && npm run build:three:dev && npm run build:three",
+    "dev:p5": "webpack-dev-server --mode development --config webpack.p5.config.mjs",
+    "dev:three": "webpack-dev-server --mode development --config webpack.three.config.mjs"
+  },
+  "dependencies": {
+    "p5": "^2.3.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "css-loader": "^7.1.4",
+    "eslint": "^10.4.1",
+    "eslint-plugin-es-x": "^9.6.0",
+    "globals": "^17.6.0",
+    "html-webpack-plugin": "^5.6.7",
+    "mini-css-extract-plugin": "^2.10.2",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.3",
+    "webpack-dev-server": "^5.2.4"
+  }
+}

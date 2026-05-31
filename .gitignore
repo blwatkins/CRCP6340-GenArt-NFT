@@ -1,0 +1,15 @@
+*.DS_Store
+
+# JetBrains IDEs
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Node and npm
+node_modules/
+
+# compiling, bundling, testing, and coverage output
+_dist/
+_dist-p5/
+_dist-three/
