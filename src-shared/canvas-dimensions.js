@@ -60,7 +60,7 @@ export class CanvasDimensions {
      */
     static set resolution(resolution) {
         if (!CanvasDimensions.#isValidResolution(resolution)) {
-            throw new Error('Resolution must be greater than 100.');
+            throw new Error('Resolution must be greater than or equal to 100.');
         }
 
         CanvasDimensions.#resolution = resolution;
