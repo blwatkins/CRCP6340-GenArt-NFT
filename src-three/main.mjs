@@ -25,11 +25,11 @@ import { Random, loadRandomSeed } from '../src-shared/random.mjs';
 
 import '../assets/css/three.css';
 
-/* ---------- Load Random Seed --------*/
+/* ---------- Load Random Seed -------- */
 
 await loadRandomSeed();
 
-/* ---------- Canvas Dimensions and Resizing --------*/
+/* ---------- Canvas Dimensions and Resizing -------- */
 
 /**
  * @param {THREE.WebGLRenderer} renderer
@@ -59,7 +59,7 @@ CanvasDimensions.aspectRatio = { widthRatio: 1, heightRatio: 1 };
 CanvasDimensions.resolution = 1080;
 const { width: canvasWidth, height: canvasHeight } = CanvasDimensions.getDimensions();
 
-/* ---------- Scene and Lighting --------*/
+/* ---------- Scene and Lighting -------- */
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, canvasWidth / canvasHeight, 0.1, 1000);
@@ -71,7 +71,7 @@ const light = new THREE.DirectionalLight(lightColor, lightIntensity);
 light.position.set(-1, 2, 4);
 scene.add(light);
 
-/* ---------- Geometry --------*/
+/* ---------- Geometry -------- */
 
 class Box {
     #mesh;
@@ -114,14 +114,14 @@ const totalBoxes = Random.randomInt(1, 50);
 const boxes = [];
 
 for (let i = 0; i < totalBoxes; i++) {
-    boxes.push(new Box);
+    boxes.push(new Box());
 }
 
 boxes.forEach((box) => {
     scene.add(box.mesh);
 });
 
-/* ---------- Renderer and Animation --------*/
+/* ---------- Renderer and Animation ------- */
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(canvasWidth, canvasHeight);
