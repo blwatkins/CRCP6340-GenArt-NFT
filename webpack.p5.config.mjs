@@ -20,7 +20,6 @@
 
 import path from 'path';
 
-import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
@@ -51,11 +50,6 @@ export default {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash:8].css',
             chunkFilename: '[name].[contenthash:8].css'
-        }),
-        new CopyPlugin({
-            patterns: [
-                { from: './assets/icon', to: '.' }
-            ]
         })
     ],
     optimization: {
