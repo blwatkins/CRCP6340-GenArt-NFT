@@ -74,7 +74,7 @@ export class CanvasDimensions {
         const resolution = CanvasDimensions.resolution;
 
         if (aspectRatio.widthRatio < 1 || aspectRatio.heightRatio < 1) {
-            throw new Error('widthRatio and heightRatio must be greater than 1.');
+            throw new Error('widthRatio and heightRatio must be greater than or equal to 1.');
         }
 
         const unit = resolution / Math.max(aspectRatio.widthRatio, aspectRatio.heightRatio);
