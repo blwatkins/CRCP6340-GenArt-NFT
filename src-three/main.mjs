@@ -82,7 +82,7 @@ class Box {
         const material = new THREE.MeshStandardMaterial();
         material.color.setRGB(Random.randomFloat(0, 1), Random.randomFloat(0, 1), Random.randomFloat(0, 1));
         material.roughness = Random.randomFloat(0, 1);
-        material.shininess = Random.randomFloat(0, 1);
+        material.metalness = Random.randomFloat(0, 1);
 
         this.#mesh = new THREE.Mesh(geometry, material);
         this.#mesh.position.x = Random.randomFloat(-5, 5);
