@@ -128,7 +128,7 @@ boxes.forEach((box) => {
 
 /* ---------- Renderer and Animation ------- */
 
-const renderer = new THREE.WebGLRenderer();
+renderer = new THREE.WebGLRenderer();
 renderer.setSize(canvasWidth, canvasHeight);
 decorateRenderer(renderer);
 document.body.appendChild(renderer.domElement);
