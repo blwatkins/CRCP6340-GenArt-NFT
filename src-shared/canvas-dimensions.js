@@ -33,7 +33,7 @@ export class CanvasDimensions {
      * @returns {{widthRatio: number, heightRatio: number}}
      */
     static get aspectRatio() {
-        return CanvasDimensions.#aspectRatio;
+        return { ...CanvasDimensions.#aspectRatio };
     }
 
     /**
