@@ -116,9 +116,13 @@ async function init() {
 export async function loadSeed() {
     await init();
 
+    window.$crcp ??= {};
+
     if (seedRand) {
-        window.$crcp ??= {};
         window.$crcp.seedData = seedData;
         window.$crcp.seedRand = seedRand;
+    } else {
+        delete window.$crcp.seedData;
+        delete window.$crcp.seedRand;
     }
 }
