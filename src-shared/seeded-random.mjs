@@ -96,9 +96,10 @@ class HashSeed {
 async function init() {
     const params = new URLSearchParams(window.location.search);
 
-    if (params.get('seedInput')) {
-        const seed = await HashSeed.getSeed(params.get('seedInput'));
+    const seedInput = params.get('seedInput');
 
+    if (seedInput) {
+        const seed = await HashSeed.getSeed(seedInput);
         const TOKEN_DATA = {
             tokenHash: seed
         };
