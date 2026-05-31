@@ -24,8 +24,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:p5:dev": "webpack --mode development --config webpack.p5.config.mjs",
     "build:p5": "webpack --mode production --config webpack.p5.config.mjs",
-    "build:check": "npm run build:p5:dev && npm run build:p5",
-    "dev:p5": "webpack-dev-server --mode development --config webpack.p5.config.mjs"
+    "build:three:dev": "webpack --mode development --config webpack.three.config.mjs",
+    "build:three": "webpack --mode production --config webpack.three.config.mjs",
+    "build:check": "npm run build:p5:dev && npm run build:p5 && npm run build:three:dev && npm run build:three",
+    "dev:p5": "webpack-dev-server --mode development --config webpack.p5.config.mjs",
+    "dev:three": "webpack-dev-server --mode development --config webpack.three.config.mjs"
   },
   "dependencies": {
     "p5": "^2.3.0",

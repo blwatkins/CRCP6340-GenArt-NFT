@@ -28,7 +28,8 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 export default defineConfig([
     globalIgnores([
         '_dist/',
-        '_dist-p5/'
+        '_dist-p5/',
+        '_dist-three/'
     ]),
     {
         files: [
