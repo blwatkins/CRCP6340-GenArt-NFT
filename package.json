@@ -38,13 +38,13 @@
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "css-loader": "^7.1.4",
-    "eslint": "^10.4.1",
-    "eslint-plugin-es-x": "^9.6.0",
-    "globals": "^17.6.0",
+    "eslint": "^10.6.0",
+    "eslint-plugin-es-x": "^9.7.0",
+    "globals": "^17.7.0",
     "html-webpack-plugin": "^5.6.7",
     "mini-css-extract-plugin": "^2.10.2",
-    "webpack": "^5.107.2",
-    "webpack-cli": "^7.0.3",
+    "webpack": "^5.108.3",
+    "webpack-cli": "^7.1.0",
     "webpack-dev-server": "^5.2.5"
   }
 }
